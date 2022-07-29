@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:productos_app/ui/input_decorations.dart';
 import 'package:productos_app/widgets/widgets.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -9,7 +10,7 @@ class LoginScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 250),
+              SizedBox(height: 200),
               CardContainer(
                 child: Column(children: [
                   SizedBox(
@@ -31,7 +32,8 @@ class LoginScreen extends StatelessWidget {
               Text(
                 'Crear una nueva cuenta',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              )
+              ),
+              SizedBox(height: 50,)
             ],
           ),
         ),
@@ -51,23 +53,42 @@ class _LoginForm extends StatelessWidget {
           TextFormField(
             autocorrect: false,
             keyboardType: TextInputType.emailAddress,
-            decoration: const InputDecoration(
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.deepPurple,
-                  ),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.deepPurple, width: 2),
-                ),
+            decoration: InputDecorations.authInputDecoration(
                 hintText: 'JohnDoe@gmail.com',
-                labelText: 'Correo',
-                labelStyle: TextStyle(
-                  color: Colors.grey,
-                ),
-                prefixIcon: Icon(Icons.alternate_email_sharp, color: Colors.deepPurple,)
-                ),
-          )
+                labelText: 'Correo Electronico',
+                prefixIcon: Icons.alternate_email_sharp),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          TextFormField(
+            autocorrect: false,
+            obscureText: true,
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecorations.authInputDecoration(
+                hintText: '*********',
+                labelText: 'Contrasena',
+                prefixIcon: Icons.lock_outline),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          MaterialButton(
+            onPressed: () {
+              //TODO: LOGINFORM
+            },
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            elevation: 0,
+            color: Colors.deepPurple,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+              child: Text(
+                'Ingresar',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
         ],
       )),
     );
